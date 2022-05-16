@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import NavBar from "../src/NavBar";
+import NavBar from "../src/components/NavBar";
 
 const Home: NextPage = () => {
   return (
