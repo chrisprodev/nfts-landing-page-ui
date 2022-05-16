@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import NavBar from "../src/NavBar";
 
 const Home: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
         <meta name="description" content="NFT Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NavBar />
 
       <main></main>
     </>
