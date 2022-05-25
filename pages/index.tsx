@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Gallery from "../src/components/Gallery";
 import Header from "../src/components/Header";
 import NavBar from "../src/components/NavBar";
 
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <NavBar />
       <Header />
+      <Gallery />
     </>
   );
 };
