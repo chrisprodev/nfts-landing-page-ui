@@ -1,26 +1,23 @@
 import React from "react";
-import styled from "styled-components";
-import { Categories } from "../../models/catories";
+import * as Styles from "./Styles";
+import { Categories } from "../../models/categories";
 
-export const GalleryCategory: React.FC<Categories> = ({
+interface Props extends Categories {
+  onSelect: (id: number) => void;
+}
+
+export const GalleryCategory: React.FC<Props> = ({
   id,
   name,
   active,
+  onSelect,
 }) => {
-  return <Container active={active}>{name}</Container>;
+  return (
+    <Styles.Container
+      active={id === active}
+      onClick={() => onSelect(id)}
+    >
+      {name}
+    </Styles.Container>
+  );
 };
-
-const Container = styled.span<{ active?: boolean }>`
-  cursor: pointer;
-  background: ${({ active }) => (active ? "#0C1F65" : "#061033")};
-  padding: 1.2rem 3.2rem;
-  color: #2e5bff;
-  font-size: 1.8rem;
-  border-radius: 1rem;
-  border: ${({ active }) =>
-    active ? "solid 2px #2e5bff" : "none"};
-
-  :hover {
-    background: #0c1f65;
-  }
-`;

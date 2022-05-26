@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { categories } from "../../constants/categories";
 import GalleryCategory from "../GalleryCategory";
 
 export const Gallery = () => {
+  const [activeCat, setActiveCat] = useState(2);
+
+  const handleSelect = useCallback(
+    (id: number) => {
+      setActiveCat(id);
+    },
+    [setActiveCat]
+  );
+
   return (
     <Container>
       <GalleryHeader>
@@ -12,7 +21,12 @@ export const Gallery = () => {
       </GalleryHeader>
       <Categories>
         {categories.map((category) => (
-          <GalleryCategory key={category.id} {...category} />
+          <GalleryCategory
+            key={category.id}
+            active={activeCat}
+            onSelect={handleSelect}
+            {...category}
+          />
         ))}
       </Categories>
     </Container>
