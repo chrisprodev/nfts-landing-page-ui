@@ -3,7 +3,7 @@ import * as Styles from "./Styles";
 import { Categories } from "../../models/categories";
 
 interface Props extends Categories {
-  onSelect: (id: number) => void;
+  onSelect: () => void;
 }
 
 export const GalleryCategory: React.FC<Props> = ({
@@ -13,10 +13,7 @@ export const GalleryCategory: React.FC<Props> = ({
   onSelect,
 }) => {
   return (
-    <Styles.Container
-      active={id === active}
-      onClick={() => onSelect(id)}
-    >
+    <Styles.Container active={id === active} onClick={onSelect}>
       {name}
     </Styles.Container>
   );

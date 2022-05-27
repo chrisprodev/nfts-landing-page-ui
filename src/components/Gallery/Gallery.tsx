@@ -1,16 +1,25 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { categories } from "../../constants/categories";
+import Drop from "../Drop";
 import GalleryCategory from "../GalleryCategory";
 
 export const Gallery = () => {
   const [activeCat, setActiveCat] = useState(2);
+  const [activeDrop, setActiveDrop] = useState(2);
 
-  const handleSelect = useCallback(
+  const handleSelectCat = useCallback(
     (id: number) => {
       setActiveCat(id);
     },
     [setActiveCat]
+  );
+
+  const handleSelectDrop = useCallback(
+    (id: number) => {
+      setActiveDrop(id);
+    },
+    [setActiveDrop]
   );
 
   return (
@@ -19,16 +28,25 @@ export const Gallery = () => {
         <h6>NFT Marketplace</h6>
         <h3>Hot Drops</h3>
       </GalleryHeader>
-      <Categories>
+      <CategoriesContainer>
         {categories.map((category) => (
           <GalleryCategory
             key={category.id}
             active={activeCat}
-            onSelect={handleSelect}
+            onSelect={() => handleSelectCat(category.id)}
             {...category}
           />
         ))}
-      </Categories>
+      </CategoriesContainer>
+      <DropsContainer>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((drop) => (
+          <Drop
+            key={drop}
+            active={drop === activeDrop}
+            onSelect={() => handleSelectDrop(drop)}
+          />
+        ))}
+      </DropsContainer>
     </Container>
   );
 };
@@ -58,8 +76,15 @@ const GalleryHeader = styled.div`
   }
 `;
 
-const Categories = styled.div`
+const CategoriesContainer = styled.div`
   margin-top: 6rem;
   display: flex;
   justify-content: space-between;
+`;
+
+const DropsContainer = styled.div`
+  margin-top: 6rem;
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 `;
