@@ -1,8 +1,8 @@
-import { Categories } from "../models/catories";
+import { Categories } from "../models/categories";
 
 export const categories: Categories[] = [
   { id: 1, name: "Music" },
-  { id: 2, name: "Art", active: true },
+  { id: 2, name: "Art" },
   { id: 3, name: "Photography" },
   { id: 4, name: "Video" },
   { id: 5, name: "Sport" },
